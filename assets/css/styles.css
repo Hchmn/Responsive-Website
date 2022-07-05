@@ -1,0 +1,385 @@
+@import "./normalize.css";
+@import "./navigation.css";
+
+:root {
+  --color-primary: #2584ff;
+  --color-secondary: #00d9ff;
+  --color-accent: #ff3400;
+  --color-headings: #1b0760;
+  --color-body: #918ca4;
+  --color-body-darker: #5c5577;
+  --color-border: #ccc;
+
+  --border-radius: 30px;
+}
+
+*, *::before, *::after {  
+  box-sizing: border-box;
+}
+
+/* Typography  */
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+html {
+  /* 62.5% of 16px = 10px */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: var(--color-body);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/33/Cartoon_space_rocket.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: 40% 70%;
+  overflow-y: auto;
+  
+}
+
+h1, h2, h3 {
+  color: var(--color-headings);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+h1 {
+  /* 1 x font size of the html element  */
+  font-size: 6rem;
+}
+
+
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+p {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 1.8rem;
+  }
+
+  h1 {
+    font-size: 8rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  h3 {
+    font-size: 2.4rem;
+  }
+}
+
+/* Links  */
+a {
+  text-decoration: none;
+}
+
+/* LOGO */
+.logo {
+  width: 40%;
+}
+
+/* Icons  */
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+
+.icon-container--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.icon-container--accent {
+  background: #5814C8;
+}
+
+
+/* Lists  */
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+/*Collapsibles  */
+.collapsible__content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+} 
+
+.collapsible--expanded .collapsible__chevron {
+  transform: rotate(0);
+}
+
+.collapsible--expanded .collapsible__content {
+  margin-top: 10px;
+  max-height: 100%;
+  opacity: 1;
+}
+
+
+/* Nabar  */
+.nav {
+  align-items: center;
+  background: #F0EAF5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.nav__list {
+  width: 100%;
+  margin: 0;
+}
+
+.nav__item {
+  padding: 0.5rem 2rem;
+  border-bottom: 2px solid #fff;
+}
+
+
+.nav__item > a {
+  color: #000;
+  font-weight: bold;
+  transition: color .3s;
+  font-size: 2rem;
+}
+
+
+.nav__item > a:hover {
+  color: #5814C8;
+  font-weight: bolder;
+
+}
+
+.nav__toggler {
+  opacity: .5;
+  transition: box-shadow .15s;
+  cursor: pointer;
+}
+
+
+.nav.collapsible--expanded .nav__toggler {
+  opacity: 1;
+  box-shadow: 0 0 0 3px #666;
+  border-radius: 5px;
+}
+
+.nav__brand {
+  transform: translateY(5px);
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.nav__brand > p {
+  color: #5814C8;
+  font-size: 30px;
+  font-weight: bold;
+  justify-content: center;
+  align-items:center;
+  padding-top: 15px;
+}
+
+@media screen and (min-width: 920px) {
+  .nav__toggler {
+    display: none;
+  }
+
+  .nav__list {
+    width: auto;
+    display: flex;
+    font-size: 1.6rem;
+    max-height: 100%;
+    opacity: 1;
+  }
+
+  .nav__item {
+    border: 0;
+  }
+
+}
+
+/*Section*/
+section {
+  margin-left: 10%;
+  margin-top: 10%;
+}
+section > h1 {
+  color:#5814C8;
+  font-weight: bold;
+}
+
+section > p{
+  font-size: 2.5rem;
+  color:#5814C8;
+  font-weight: 600;
+  width: 35ch;
+}
+
+@media screen and (max-width: 919px) {
+  section > h1 {
+    color:#5814C8;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  body{
+    background-size: 50% 50%;
+  }
+}
+
+
+/* Grids  */
+.grid {
+  display: grid;
+}
+
+@media screen and (min-width: 768px) {
+  .grid--1x2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .grid--1x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.block {
+  --padding-vertical: 5rem;
+  align-items: flex-end;
+  padding: var(--padding-vertical) 2rem; 
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 2rem;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* Plans  */
+.subscribe {
+  max-width: 660px;
+  transition: transform .2s ease-out;
+  border: rgb(255, 252, 252) 5px solid;
+  background: #fff;
+  border-radius: 16px;
+  opacity: 1;
+  margin-bottom: 5%;
+  margin: 5%;
+  padding: 10px;
+}
+
+.plan__name {
+  color: #5814C8;
+  font-weight: bolder;
+  font-size: 4.5rem;
+  margin: 0;
+}
+
+.plan__price {
+  font-size: 4.5rem;
+  color:black;
+  opacity: 0.8;
+  font-weight: bold;
+}
+.plan__description {
+  display: block;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+button {
+  background: #ffffff;
+  color: #5814C8;
+  border: 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-size: 2rem;
+  border: #5814C8 3px solid;
+}
+
+.button {
+  margin-top: 5%;
+}
+
+button:hover{
+  background: #5814C8;
+}
+
+button > a:hover {
+  color:#fff;
+}
+
+
+.image__grid{
+  display: flex;
+}
+
+
+footer{
+  width: 100%;
+  color: white;
+  float: right;
+  justify-items: right;
+  align-self: right;
+  justify-content: right;
+  display: flex;
+  padding-right: 10px;
+  margin-top:7%;
+}
+
+
+@media screen and (min-width: 1600px) {
+  .image__grid--1x3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 860px){
+  footer{
+    justify-content: center;
+    display: flex;
+  }
+}
+
+footer > div > div > a > img  {
+  width: 70px;
+}
+
+
+
+
